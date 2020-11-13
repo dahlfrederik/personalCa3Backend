@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dahlfrederik/ca3_backend.svg?branch=main)](https://travis-ci.org/dahlfrederik/ca3_backend)
+[![Build Status](https://travis-ci.org/dahlfrederik/personalCa3Backend.svg?branch=main)](https://travis-ci.org/dahlfrederik/personalCa3Backend)
 
 *This project is meant as start code for upcoming projects which will use an endomondo like structure"*
 
