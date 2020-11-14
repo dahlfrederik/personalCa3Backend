@@ -3,6 +3,8 @@ package utils;
 
 import entities.Role;
 import entities.User;
+import entities.UserFavQuotes;
+import facades.UserFavQuotesFacade;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,6 +27,8 @@ public class SetupTestUsers {
     User user = new User("user", "kode123");
     User admin = new User("admin", "kodeord");
     User both = new User("user_admin", "kodetest");
+    UserFavQuotes favQuote = new UserFavQuotes("My fav quote"); 
+    
 
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test")||both.getUserPass().equals("test"))
       throw new UnsupportedOperationException("You have not changed the passwords");
@@ -36,6 +40,7 @@ public class SetupTestUsers {
     admin.addRole(adminRole);
     both.addRole(userRole);
     both.addRole(adminRole);
+    em.persist(favQuote);
     em.persist(userRole);
     em.persist(adminRole);
     em.persist(user);
@@ -46,7 +51,8 @@ public class SetupTestUsers {
     System.out.println("Testing user with OK password: " + user.verifyPassword("kode"));
     System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
     System.out.println("Created TEST Users");
-   
+      
+    
   }
 
 }
