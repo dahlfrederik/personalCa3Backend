@@ -2,6 +2,7 @@
 package facades;
 
 import DTO.UserFavQuoteDTO;
+import DTO.UserFavQuotesDTO;
 import entities.User;
 import entities.UserFavQuotes;
 import java.util.ArrayList;
@@ -28,16 +29,13 @@ public class UserFavQuotesFacade {
         return instance;
     }
     
-    public List<UserFavQuoteDTO> getUsersQuotes(){
+    public UserFavQuotesDTO getUsersQuotes(){
         EntityManager em = emf.createEntityManager(); 
         try {
             Query query = em.createQuery("SELECT u FROM UserFavQuotes u");                 
             List<UserFavQuotes> userFavQuotesList = query.getResultList();
-            List<UserFavQuoteDTO> userFavQuotesListDTO = new ArrayList(); 
-            for (UserFavQuotes userFavQuotes : userFavQuotesList) {
-                userFavQuotesListDTO.add(new UserFavQuoteDTO(userFavQuotes)); 
-            }
-            return userFavQuotesListDTO; 
+            
+            return new UserFavQuotesDTO(userFavQuotesList); 
         } finally {
             em.close();
         }
